@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import (RegisterView, UserMeView, CategoriaListView, ProdottoListView, ProdottoCreateUpdateDeleteView, OrdineListCreateView, OrdineUpdateStatoView)
+from .views import (RegisterView, UserMeView, CategoriaListView, ProdottoListView, ProdottoCreateUpdateDeleteView,
+                    OrdineListCreateView, OrdineUpdateStatoView, CategoriaDetailView)
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -11,8 +12,13 @@ urlpatterns = [
 
     #Menu (Pubblico e Gestione Admin)
     path('categorie/', CategoriaListView.as_view(), name='categoria_list'),
+    path('categorie/<int:pk>/', CategoriaDetailView.as_view()),
     path('prodotti/', ProdottoListView.as_view(), name='prodotto_list'),
     path('prodotti/<int:pk>/', ProdottoCreateUpdateDeleteView.as_view(), name='prodotto_detail'),
+
+    #Gestione prodotti per admin
+    path('admin/prodotti/', ProdottoCreateUpdateDeleteView.as_view()),
+    path('admin/prodotti/<int:pk>/', ProdottoCreateUpdateDeleteView.as_view()),
 
     #Ordini
     path('ordini/', OrdineListCreateView.as_view(), name='ordine_list_create'),

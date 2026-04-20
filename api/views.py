@@ -25,6 +25,11 @@ class CategoriaListView(generics.ListAPIView):
     serializer_class = CategoriaSerializer
     permission_classes = [permissions.AllowAny]
 
+class CategoriaDetailView(generics.RetrieveAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+    permission_classes = [permissions.AllowAny]
+
 
 class ProdottoListView(generics.ListAPIView):
     queryset = Prodotto.objects.all()
@@ -57,7 +62,6 @@ class ProdottoCreateUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView, gene
     queryset = Prodotto.objects.all()
     serializer_class = ProdottoSerializer
     permission_classes = [permissions.IsAdminUser] #Solo Admin
-
 
 class OrdineListCreateView(generics.ListCreateAPIView):
     serializer_class = OrdineSerializer

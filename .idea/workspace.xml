@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="Inizio progetto">
-      <change afterPath="$PROJECT_DIR$/client/main.py" afterDir="false" />
+    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="Miglioramenti e client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoGattiniAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoGattiniAPI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gattini_cafe.db" beforeDir="false" afterPath="$PROJECT_DIR$/gattini_cafe.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +107,7 @@
       <updated>1776623099213</updated>
       <workItem from="1776623100493" duration="1323000" />
       <workItem from="1776695338440" duration="4627000" />
-      <workItem from="1776708607628" duration="2470000" />
+      <workItem from="1776708607628" duration="3432000" />
     </task>
     <task id="LOCAL-00001" summary="Inizio progetto">
       <option name="closed" value="true" />
@@ -119,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776699774310</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Miglioramenti e client">
+      <option name="closed" value="true" />
+      <created>1776711345668</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776711345668</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inizio progetto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inizio progetto" />
+    <MESSAGE value="Miglioramenti e client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Miglioramenti e client" />
   </component>
 </project>
