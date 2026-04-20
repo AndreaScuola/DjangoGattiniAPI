@@ -3,6 +3,7 @@ from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, ProdottoSerializer, CategoriaSerializer, OrdineSerializer
 from .models import Prodotto, Categoria, Ordine
+from rest_framework import filters
 
 #Registrazione nuovo utente
 class RegisterView(generics.CreateAPIView):
@@ -26,24 +27,32 @@ class CategoriaListView(generics.ListAPIView):
 
 
 class ProdottoListView(generics.ListAPIView):
+    queryset = Prodotto.objects.all()
     serializer_class = ProdottoSerializer
     permission_classes = [permissions.AllowAny]
 
+    #Abilitiamo la ricerca automatica
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['nome', 'descrizione']
+
     def get_queryset(self):
-        queryset = Prodotto.objects.all()
-        #Filtro per categoria: ?categoria=1
-        cat_id = self.request.query_params.get('categoria')
-        if cat_id:
-            queryset = queryset.filter(categoria_id=cat_id)
-
-        #Filtro per disponibilità: ?disponibile=true
-        disp = self.request.query_params.get('disponibile')
-        if disp == 'true':
+        queryset = super().get_queryset()
+        #Filtro manuale per categoria e disponibilità
+        categoria = self.request.query_params.get('categoria')
+        disponibile = self.request.query_params.get('disponibile')
+        if categoria:
+            queryset = queryset.filter(categoria_id=categoria)
+        if disponibile == 'true':
             queryset = queryset.filter(disponibile=1)
-
         return queryset
 
+#Mostra i prodotti anche ai non autenticati
+class ProdottoDetailView(generics.RetrieveAPIView):
+    queryset = Prodotto.objects.all()
+    serializer_class = ProdottoSerializer
+    permission_classes = [permissions.AllowAny]
 
+#Gestione prodotti solo per admin
 class ProdottoCreateUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView, generics.CreateAPIView):
     queryset = Prodotto.objects.all()
     serializer_class = ProdottoSerializer

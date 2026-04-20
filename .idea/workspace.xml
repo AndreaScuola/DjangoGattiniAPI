@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DjangoGattiniAPI.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gattini_cafe.db" afterDir="false" />
+    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="Inizio progetto">
+      <change afterPath="$PROJECT_DIR$/client/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DjangoGattiniAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoGattiniAPI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gattini_cafe.db" beforeDir="false" afterPath="$PROJECT_DIR$/gattini_cafe.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AndreaScuola&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AndreaScuola/DjangoGattiniAPI.git&quot;,
+    &quot;accountId&quot;: &quot;f0698331-3cb6-41d6-8aae-c03c487d5a33&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -99,11 +108,25 @@
       <option name="presentableId" value="Default" />
       <updated>1776623099213</updated>
       <workItem from="1776623100493" duration="1323000" />
-      <workItem from="1776695338440" duration="4241000" />
+      <workItem from="1776695338440" duration="4627000" />
+      <workItem from="1776708607628" duration="2470000" />
     </task>
+    <task id="LOCAL-00001" summary="Inizio progetto">
+      <option name="closed" value="true" />
+      <created>1776699774310</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776699774310</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Inizio progetto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inizio progetto" />
   </component>
 </project>
