@@ -1,0 +1,84 @@
+### 1. Registrazione nuovo utente
+POST http://127.0.0.1:8000/api/auth/register/
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test",
+  "email": "test@gmail.com"
+}
+
+### 2. Login (Ottieni il Token)
+# Copia il valore di "access" dalla risposta di questa chiamata
+POST http://127.0.0.1:8000/api/auth/login/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {% client.global.set("auth_token", response.body.access); %}
+
+### 3. Profilo Utente (Richiede Token)
+GET http://127.0.0.1:8000/api/auth/me/
+Authorization: Bearer {{auth_token}}
+
+### 4. Lista Categorie (Pubblico)
+GET http://127.0.0.1:8000/api/categorie/
+
+### 5. Lista Prodotti con Filtri e Search (Pubblico)
+# Cerca prodotti "caffe" della categoria 1 disponibili
+GET http://127.0.0.1:8000/api/prodotti/?search=caffe&categoria=1&disponibile=true
+
+### 6. Dettaglio Singolo Prodotto (Pubblico)
+GET http://127.0.0.1:8000/api/prodotti/1/
+
+### 6,5. Prodotti (Pubblico)
+GET http://127.0.0.1:8000/api/prodotti/
+
+### 7. Creazione Ordine (Richiede Token)
+POST http://127.0.0.1:8000/api/ordini/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "note": "Consegna al tavolo 5",
+  "prodotti": [
+    {
+      "prodotto": 1,
+      "quantita": 2
+    },
+    {
+      "prodotto": 3,
+      "quantita": 1
+    }
+  ]
+}
+
+### 8. Lista Ordini (Richiede Token)
+# L'utente vede i suoi, l'admin vede tutti
+GET http://127.0.0.1:8000/api/ordini/
+Authorization: Bearer {{auth_token}}
+
+### 9. Aggiornamento Stato Ordine (Solo Admin)
+PATCH http://127.0.0.1:8000/api/ordini/1/stato/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "stato": "consegnato"
+}
+
+### 10. Gestione Prodotto: Creazione (Solo Admin)
+POST http://127.0.0.1:8000/api/admin/prodotti/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "nome": "Nuovo Snack Gatto",
+  "descrizione": "Snack croccante al tonno",
+  "prezzo": 4.50,
+  "disponibile": 1,
+  "categoria": 1
+}
