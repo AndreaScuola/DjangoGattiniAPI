@@ -1,61 +1,64 @@
 # Gattini Cafe - API REST
 
-API REST per la gestione di categorie, prodotti, utenti autenticati e ordini, sviluppata con **Django REST Framework** e autenticazione **JWT** tramite Simple JWT.
+Backend REST per la gestione di un catalogo (categorie + prodotti) e di un sistema di ordini con autenticazione tramite JWT.  
+Realizzato con Django e Django REST Framework.
 
 ---
 
-## Funzionalità
+## Panoramica
 
-- Registrazione utente  
-- Login JWT con access e refresh token  
-- Endpoint protetto `/api/auth/me/`  
-- Liste pubbliche di prodotti e categorie  
-- Filtri su prodotti:  
-  - `categoria`  
-  - `disponibile`  
-  - `search`  
-- CRUD protetto per prodotti e categorie (admin)  
-- Creazione e gestione ordini per utenti autenticati  
-- Calcolo automatico del totale ordine  
-- Visibilità ordini:  
-  - utente → solo i propri  
-  - admin → tutti  
-- Aggiornamento stato ordine solo per admin  
-- Database preconfigurato con dati di esempio  
+L’API permette:
+- consultazione pubblica del catalogo
+- autenticazione utenti tramite token JWT
+- creazione e gestione ordini
+- operazioni amministrative su prodotti e categorie
 
 ---
 
-## Tecnologie
+## Setup progetto
 
-- Python  
-- Django  
-- Django REST Framework  
-- Simple JWT  
-- SQLite  
-
----
-
-## Installazione
-
-Clonare il repository e configurare l’ambiente:
+Clonare la repository:
 
 ```bash
 git clone <url-del-repository>
 cd gattini_cafe_project
+```
+
+Creare ambiente virtuale:
+
+```bash
 python -m venv venv
+```
+
+Attivare ambiente:
+
+Linux / Mac:
+```bash
+source venv/bin/activate
+```
+
+Windows:
+```bash
+venv\Scripts\activate
+```
+
+Installare dipendenze:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🗄️ Database
+## Database
 
-Il progetto utilizza il database SQLite fornito:
+Il progetto utilizza SQLite con un database già pronto:
 
-```
+```text
 gattini_cafe.db
 ```
 
-Configurazione in `settings.py`:
+Configurazione in settings.py:
 
 ```python
 DATABASES = {
@@ -66,7 +69,7 @@ DATABASES = {
 }
 ```
 
-Eseguire le migrazioni senza perdere i dati:
+Allineare le migrazioni senza perdere i dati:
 
 ```bash
 python manage.py makemigrations
@@ -75,7 +78,7 @@ python manage.py migrate --fake-initial
 
 ---
 
-## Avvio del server
+## Avvio server
 
 ```bash
 python manage.py runserver
@@ -83,31 +86,27 @@ python manage.py runserver
 
 API disponibile su:
 
-```
+```text
 http://127.0.0.1:8000/api/
 ```
 
 ---
 
-## 🔐 Autenticazione JWT
+## Autenticazione
 
-L’autenticazione avviene tramite token JWT.
+L’accesso agli endpoint protetti avviene tramite JWT.
 
-Login  
-`POST /api/auth/login/`  
+Login:
+POST /api/auth/login/
 
-Restituisce:  
-- access  
-- refresh  
+Refresh token:
+POST /api/auth/token/refresh/
 
-Refresh token  
-`POST /api/auth/token/refresh/`  
+Registrazione:
+POST /api/auth/register/
 
-Registrazione  
-`POST /api/auth/register/`  
-
-Dati utente autenticato  
-`GET /api/auth/me/`  
+Profilo utente autenticato:
+GET /api/auth/me/
 
 Header richiesto:
 
@@ -117,54 +116,66 @@ Authorization: Bearer <access_token>
 
 ---
 
-## Endpoints disponibili
-
-### Prodotti
-
-Pubblici  
-- `GET /api/prodotti/`  
-  Lista prodotti con filtri: categoria, disponibile, search  
-- `GET /api/prodotti/{id}/`  
-  Dettaglio prodotto  
-
-Protetti JWT + admin  
-- `POST /api/prodotti/`  
-- `PUT /api/prodotti/{id}/`  
-- `PATCH /api/prodotti/{id}/`  
-- `DELETE /api/prodotti/{id}/`  
-
----
+## Catalogo
 
 ### Categorie
 
-Pubbliche  
-- `GET /api/categorie/`  
-- `GET /api/categorie/{id}/`  
+Accesso pubblico:
+GET /api/categorie/
+GET /api/categorie/{id}/
 
-Protette JWT + admin  
-- `POST /api/categorie/`  
-- `PUT /api/categorie/{id}/`  
-- `DELETE /api/categorie/{id}/`  
+Accesso admin:
+POST /api/categorie/
+PUT /api/categorie/{id}/
+DELETE /api/categorie/{id}/
 
 ---
 
-### Ordini
+### Prodotti
 
-Protetti JWT  
-- `GET /api/ordini/`  
-  - utente → solo i propri  
-  - admin → tutti  
-- `POST /api/ordini/`  
-- `GET /api/ordini/{id}/`  
+Accesso pubblico:
+GET /api/prodotti/
+GET /api/prodotti/{id}/
 
-Protetto JWT + admin  
-- `PATCH /api/ordini/{id}/stato/`  
+Filtri disponibili:
+- categoria
+- disponibile
+- search
 
-### Payload creazione ordine
+Accesso admin:
+POST /api/prodotti/
+PUT /api/prodotti/{id}/
+PATCH /api/prodotti/{id}/
+DELETE /api/prodotti/{id}/
+
+---
+
+## Ordini
+
+Accesso riservato a utenti autenticati.
+
+Lista ordini:
+GET /api/ordini/
+
+- utente normale → vede solo i propri
+- admin → vede tutti
+
+Creazione ordine:
+POST /api/ordini/
+
+Dettaglio ordine:
+GET /api/ordini/{id}/
+
+Aggiornamento stato (admin):
+PATCH /api/ordini/{id}/stato/
+
+---
+
+## Payload creazione ordine
 
 ```json
 {
-  "note": "Senza glutine!",
+  "note": "Senza glutine",
   "prodotti": [
     { "prodotto_id": 1, "quantita": 2 },
     { "prodotto_id": 3, "quantita": 1 }
@@ -172,39 +183,25 @@ Protetto JWT + admin
 }
 ```
 
-Il totale viene calcolato automaticamente dal server.
-
 ---
 
-## Utente Admin
+## Esempi richieste
 
-Le password degli utenti di test sono state resettate.  
-
-Creare un nuovo admin con:
-
-```bash
-python manage.py createsuperuser
-```
-
----
-
-## Esempi di chiamate API
-
-Lista prodotti disponibili
+Lista prodotti disponibili:
 
 ```bash
 curl -X GET "http://127.0.0.1:8000/api/prodotti/?disponibile=true"
 ```
 
-Login
+Login:
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/api/auth/login/" \
   -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin123"}'
+  -d '{"username":"admin","password":"admin"}'
 ```
 
-Creazione ordine
+Creazione ordine:
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/api/ordini/" \
@@ -216,4 +213,45 @@ curl -X POST "http://127.0.0.1:8000/api/ordini/" \
       {"prodotto_id": 1, "quantita": 2}
     ]
   }'
+```
+
+---
+
+## Utente amministratore
+
+Creazione superuser:
+
+```bash
+python manage.py createsuperuser
+```
+
+---
+
+## Struttura progetto
+
+- autenticazione utenti (JWT)
+- gestione catalogo prodotti e categorie
+- gestione ordini
+
+Permessi:
+- utenti: operazioni base e ordini personali
+- admin: gestione completa sistema
+
+---
+
+## Client CLI
+
+Client Python per test API.
+
+Installazione dipendenze:
+
+```bash
+pip install requests
+```
+
+Avvio client (quando il server è attivo su un altro terminale):
+
+```bash
+cd client
+python main.py
 ```
