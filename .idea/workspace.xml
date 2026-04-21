@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="Miglioramenti e client">
+    <list default="true" id="0efd6936-9688-4f47-aea9-8156859ad32c" name="Changes" comment="Modifiche endpoint">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,8 @@
       <updated>1776623099213</updated>
       <workItem from="1776623100493" duration="1323000" />
       <workItem from="1776695338440" duration="4627000" />
-      <workItem from="1776708607628" duration="3432000" />
+      <workItem from="1776708607628" duration="3539000" />
+      <workItem from="1776790315778" duration="784000" />
     </task>
     <task id="LOCAL-00001" summary="Inizio progetto">
       <option name="closed" value="true" />
@@ -125,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776711345668</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Modifiche endpoint">
+      <option name="closed" value="true" />
+      <created>1776712167714</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776712167714</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +142,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inizio progetto" />
     <MESSAGE value="Miglioramenti e client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Miglioramenti e client" />
+    <MESSAGE value="Modifiche endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifiche endpoint" />
   </component>
 </project>
